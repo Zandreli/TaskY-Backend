@@ -12,7 +12,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://task-y-frontend-4odj.vercel.app/"],
+    origin: ["https://task-y-frontend-4odj.vercel.app"],
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
     credentials: true,
   }),
