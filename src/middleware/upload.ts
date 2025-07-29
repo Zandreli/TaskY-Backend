@@ -19,12 +19,17 @@ const storage = multer.diskStorage({
 const fileFilter = (
   req: Express.Request,
   file: Express.Multer.File,
-  cb: multer.FileFilterCallback
+  cb: multer.FileFilterCallback,
 ) => {
   if (file.mimetype.startsWith("image/")) {
     cb(null, true);
   } else {
-    cb(new Error("Invalid file type. Only images are allowed!") as unknown as null, false);
+    cb(
+      new Error(
+        "Invalid file type. Only images are allowed!",
+      ) as unknown as null,
+      false,
+    );
   }
 };
 

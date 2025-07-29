@@ -24,7 +24,7 @@ export const registerUser = async (req: Request, res: Response) => {
       res
         .status(409)
         .json({ message: "User with this email or username already exists." });
-        return;
+      return;
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -99,12 +99,10 @@ export const updatePassword = async (req: Request, res: Response) => {
   const userId = (req as any).userId;
 
   if (!currentPassword || !newPassword) {
-    res
-      .status(400)
-      .json({
-        message:
-          "Current and new passwords are required to complete the request.",
-      });
+    res.status(400).json({
+      message:
+        "Current and new passwords are required to complete the request.",
+    });
     return;
   }
 

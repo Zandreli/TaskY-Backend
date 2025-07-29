@@ -6,7 +6,6 @@ import { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import path from "path";
 
-
 const app: Express = express();
 
 app.use(express.json());
@@ -14,13 +13,13 @@ app.use(
   cors({
     origin: [
       "https://task-y-frontend-4odj.vercel.app",
-      "http://localhost:5173"
+      "http://localhost:5173",
     ],
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
     credentials: true,
   }),
 );
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.get("/", (_req, res) => {
   res.send("<h1>Welcome to Tasky</h1>");
