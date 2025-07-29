@@ -6,8 +6,10 @@ import { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import path from "path";
 import dotenv from "dotenv";
+import { PrismaClient } from "@prisma/client";
 
 dotenv.config();
+const prisma = new PrismaClient();
 const app: Express = express();
 
 app.use(express.json());
@@ -30,6 +32,18 @@ app.get("/", (_req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
+
+app.get("/test-db", async (_req, res) => {
+  try {
+    const users = await prisma.user.findMany({
+      take: 1,
+    });
+    res.json({ success: true, users });
+  } catch (error) {
+    console.error("Database connection failed:", error);
+    res.status(500).json({ success: false, error: String(error) });
+  }
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
