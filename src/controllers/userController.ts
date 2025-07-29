@@ -35,7 +35,7 @@ export const getUserProfile = async (req: AuthRequest, res: Response) => {
       return;
     }
     if (user.avatar) {
-      user.avatar = "/uploads/avatars/${user.avatar}";
+      user.avatar = `/uploads/avatars/${user.avatar}`;
     }
     res.status(200).json({ user });
   } catch (error) {

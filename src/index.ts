@@ -5,7 +5,9 @@ import userRoutes from "./routes/users";
 import { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import path from "path";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app: Express = express();
 
 app.use(express.json());
