@@ -267,6 +267,7 @@ export const incompleteTask = async (req: AuthRequest, res: Response) => {
 };
 
 export const getCompletedTasks = async (req: AuthRequest, res: Response) => {
+  const { id } = req.params;
   const userId = req.userId;
 
   if (!userId) {
@@ -293,6 +294,7 @@ export const getCompletedTasks = async (req: AuthRequest, res: Response) => {
 };
 
 export const getDeletedTasks = async (req: AuthRequest, res: Response) => {
+  const { id } = req.params;
   const userId = req.userId;
 
   if (!userId) {
