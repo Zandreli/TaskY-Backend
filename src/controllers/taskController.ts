@@ -294,7 +294,6 @@ export const getCompletedTasks = async (req: AuthRequest, res: Response) => {
 };
 
 export const getDeletedTasks = async (req: AuthRequest, res: Response) => {
-  const { id } = req.params;
   const userId = req.userId;
 
   if (!userId) {
@@ -305,7 +304,6 @@ export const getDeletedTasks = async (req: AuthRequest, res: Response) => {
   try {
     const tasks = await prisma.task.findMany({
       where: {
-        id,
         userId,
         isDeleted: true,
       },

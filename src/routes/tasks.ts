@@ -26,6 +26,6 @@ router.patch("/restore/:id", restoreTasks);
 router.patch("/complete/:id", completeTasks);
 router.patch("/incomplete/:id", incompleteTask);
 router.get("/completed/:id", getCompletedTasks);
-router.get("/deleted/:id", getDeletedTasks);
+router.get("/deleted", getDeletedTasks);
 
 export default router;
